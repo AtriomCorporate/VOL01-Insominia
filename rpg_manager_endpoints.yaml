@@ -1,0 +1,92 @@
+type: spec.insomnia.rest/5.0
+schema_version: "5.1"
+name: RPG_MANAGER_ENDPOINTS
+meta:
+  id: wrk_af9973e92a094acfbc9cde20894cd45b
+  created: 1783556265995
+  modified: 1783556265995
+  description: ""
+collection:
+  - name: Health
+    meta:
+      id: fld_4905ee266ef34ed8a1a2c62aecbb6e91
+      created: 1783556283899
+      modified: 1783556283899
+      sortKey: -1783556283899
+      description: ""
+    children:
+      - url: "{{BASE_URL}}/health"
+        name: New Request
+        meta:
+          id: req_7f256fdfc08246fcada4be3e9aa4527c
+          created: 1783556293596
+          modified: 1783556398251
+          isPrivate: false
+          description: ""
+          sortKey: -1783556293596
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Auth
+    meta:
+      id: fld_25ae5ca324794ca683a5e56fb68d29f5
+      created: 1783556291388
+      modified: 1783556291388
+      sortKey: -1783556291388
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL }}/auth/register"
+        name: New Request
+        meta:
+          id: req_3dc996164ad547b5997fc6a2c58789e5
+          created: 1783556296327
+          modified: 1783556523081
+          isPrivate: false
+          description: ""
+          sortKey: -1783556296327
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "test34",
+            	"email": "test34@test.com",
+            	"passwordHash": "superpassword"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_8f45f54ac15a9b0ddcb1ddfee0f14b4d8e258ea4
+    created: 1783556266007
+    modified: 1783556266007
+environments:
+  name: Base Environment
+  meta:
+    id: env_8f45f54ac15a9b0ddcb1ddfee0f14b4d8e258ea4
+    created: 1783556266005
+    modified: 1783556368812
+    isPrivate: false
+  data:
+    BASE_URL: http://localhost:3000
+spec:
+  meta:
+    id: spc_25020a26e6b64fb0b42ed4fe2dfaf41f
+    created: 1783556266003
+    modified: 1783556266003
