@@ -16,11 +16,11 @@ collection:
       description: ""
     children:
       - url: "{{BASE_URL}}/health"
-        name: New Request
+        name: Get Database Status
         meta:
           id: req_7f256fdfc08246fcada4be3e9aa4527c
           created: 1783556293596
-          modified: 1783556398251
+          modified: 1783805373504
           isPrivate: false
           description: ""
           sortKey: -1783556293596
@@ -42,11 +42,11 @@ collection:
       description: ""
     children:
       - url: "{{ _.BASE_URL }}/auth/register"
-        name: New Request
+        name: Create User
         meta:
           id: req_3dc996164ad547b5997fc6a2c58789e5
           created: 1783556296327
-          modified: 1783556523081
+          modified: 1783818832467
           isPrivate: false
           description: ""
           sortKey: -1783556296327
@@ -55,13 +55,199 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"name": "test34",
-            	"email": "test34@test.com",
-            	"passwordHash": "superpassword"
+            	"name": "leozera",
+            	"email": "lhamazauro@rex.com",
+            	"passwordHash": "tyranozauroRex"
             }
         headers:
           - name: Content-Type
             value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/auth/login"
+        name: Sign In User
+        meta:
+          id: req_0829ff1184a149d9a4c61115abb1e72d
+          created: 1783805287945
+          modified: 1783845455989
+          isPrivate: false
+          description: ""
+          sortKey: -1783805287945
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "lhamazauro@rex.com",
+            	"passwordHash": "tyranozauroRex"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{BASE_URL}}/auth/me"
+        name: Return Active User
+        meta:
+          id: req_b08cea54780a43f39c56948f343dd229
+          created: 1783807907636
+          modified: 1783847513604
+          isPrivate: false
+          description: ""
+          sortKey: -1783807907636
+        method: GET
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJuYW1lIjoibGVvemVyYSIsImlhdCI6MTc4Mzg0NzUwMSwiZXhwIjoxNzgzODQ3NTYxfQ.pmhay2i-5b_aFJJh7SonXQD-ApJq0bOIaStHMWwREwo
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/auth/refresh"
+        name: Refresh Token
+        meta:
+          id: req_50bf20156f34434fbde79d8c071262a6
+          created: 1783846709315
+          modified: 1783846957741
+          isPrivate: false
+          description: ""
+          sortKey: -1783846709315
+        method: POST
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJuYW1lIjoibGVvemVyYSIsImlhdCI6MTc4Mzg0NjY1MywiZXhwIjoxNzg0NDUxNDUzfQ.7nKnfEluolExdpAJWm7iYiBSBrz1eNx4SeLHpBgQk7c
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: User
+    meta:
+      id: fld_aee563c777eb421abf02d58293190be3
+      created: 1783828428127
+      modified: 1783828428127
+      sortKey: -1783828428127
+      description: ""
+    children:
+      - url: "{{BASE_URL}}/users"
+        name: Create Visitor
+        meta:
+          id: req_3b2f2cd872cd430f9a3e0e84038707f4
+          created: 1783848352322
+          modified: 1783848865802
+          isPrivate: false
+          description: ""
+          sortKey: -1783848352322
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "thisname"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{BASE_URL}}/users?email=lhamazauro@rex.com"
+        name: Return User by Email
+        meta:
+          id: req_6b10c7f3d4a9412cb40a4696bf3374d2
+          created: 1783848360296
+          modified: 1783848619544
+          isPrivate: false
+          description: ""
+          sortKey: -1783848360296
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{BASE_URL}}/users/7"
+        name: Return User by Id
+        meta:
+          id: req_192a255423be4a3fa252cb43d091d58d
+          created: 1783848868256
+          modified: 1783848964183
+          isPrivate: false
+          description: ""
+          sortKey: -1783848868256
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{BASE_URL}}/users/7"
+        name: Change Users Name
+        meta:
+          id: req_2c89910ece514e64b40c141557899570
+          created: 1783848965837
+          modified: 1783849049585
+          isPrivate: false
+          description: ""
+          sortKey: -1783848965837
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "myname"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{BASE_URL}}/users/7"
+        name: Soft Delete User
+        meta:
+          id: req_0eb4e85591c7453496a5410da13ac52c
+          created: 1783849071753
+          modified: 1783849107444
+          isPrivate: false
+          description: ""
+          sortKey: -1783849071753
+        method: DELETE
         settings:
           renderRequestBody: true
           encodeUrl: true
