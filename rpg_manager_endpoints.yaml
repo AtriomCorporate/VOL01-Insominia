@@ -46,18 +46,64 @@ collection:
         meta:
           id: req_3dc996164ad547b5997fc6a2c58789e5
           created: 1783556296327
-          modified: 1783818832467
+          modified: 1784483842246
           isPrivate: false
-          description: ""
-          sortKey: -1783556296327
+          description: >-
+            ### Registra o Usuário — `POST /auth/register`
+
+
+
+            **Descrição:** cria um novo usuário e passa os tokens. 
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `POST /auth/register`.
+
+
+
+            **Body (JSON — `CreateUserDto`):**
+
+
+
+            **`name`** — string
+
+
+            **`email`** - string
+
+
+            **`password`** — string
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **200** — usuário criado. **`data`** = `User`: `id`, `name`,
+            `email`, `createdAt`, `updatedAt`.
+
+
+            - **400** — validação do body (`email`/`password` inválido, campos
+            extra com `forbidNonWhitelisted`, etc.).
+
+
+
+            **Exemplo de URL:**
+
+
+            - `POST http://localhost:3000/auth/register`
+          sortKey: -1783846709415
         method: POST
         body:
           mimeType: application/json
           text: |-
             {
-            	"name": "leozera",
-            	"email": "lhamazauro@rex.com",
-            	"passwordHash": "tyranozauroRex"
+            	"name": "teste101",
+            	"email": "teste101@gmail.com",
+            	"passwordHash": "teste101"
             }
         headers:
           - name: Content-Type
@@ -75,17 +121,17 @@ collection:
         meta:
           id: req_0829ff1184a149d9a4c61115abb1e72d
           created: 1783805287945
-          modified: 1783845455989
+          modified: 1784180481196
           isPrivate: false
           description: ""
-          sortKey: -1783805287945
+          sortKey: -1783846709365
         method: POST
         body:
           mimeType: application/json
           text: |-
             {
-            	"email": "lhamazauro@rex.com",
-            	"passwordHash": "tyranozauroRex"
+            	"email": "teste101@gmail.com",
+            	"password": "teste101"
             }
         headers:
           - name: Content-Type
@@ -103,14 +149,14 @@ collection:
         meta:
           id: req_b08cea54780a43f39c56948f343dd229
           created: 1783807907636
-          modified: 1783847513604
+          modified: 1784161245943
           isPrivate: false
           description: ""
-          sortKey: -1783807907636
+          sortKey: -1783846709340
         method: GET
         authentication:
           type: bearer
-          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJuYW1lIjoibGVvemVyYSIsImlhdCI6MTc4Mzg0NzUwMSwiZXhwIjoxNzgzODQ3NTYxfQ.pmhay2i-5b_aFJJh7SonXQD-ApJq0bOIaStHMWwREwo
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsIm5hbWUiOiJsZW96ZXJhIiwiZW1haWwiOiJsaGFtYXphdXJvQHJleC5jb20iLCJpYXQiOjE3ODQwMDYyMjQsImV4cCI6MTc4NDAwOTgyNH0.NaSGS3A4XqTh-0ULM0-GgMF5Xob_W9Yg8ed1wPFaB_I
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -124,14 +170,14 @@ collection:
         meta:
           id: req_50bf20156f34434fbde79d8c071262a6
           created: 1783846709315
-          modified: 1783846957741
+          modified: 1784006224058
           isPrivate: false
           description: ""
           sortKey: -1783846709315
         method: POST
         authentication:
           type: bearer
-          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsInVzZXJuYW1lIjoibGVvemVyYSIsImlhdCI6MTc4Mzg0NjY1MywiZXhwIjoxNzg0NDUxNDUzfQ.7nKnfEluolExdpAJWm7iYiBSBrz1eNx4SeLHpBgQk7c
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsIm5hbWUiOiJsZW96ZXJhIiwiZW1haWwiOiJsaGFtYXphdXJvQHJleC5jb20iLCJpYXQiOjE3ODQwMDYwNTcsImV4cCI6MTc4NDYxMDg1N30.4g3D1YVPqqnQL_r_fx_PCofgyYr5d69OlJzCnWRQU8w
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -144,7 +190,7 @@ collection:
     meta:
       id: fld_aee563c777eb421abf02d58293190be3
       created: 1783828428127
-      modified: 1783828428127
+      modified: 1784161249726
       sortKey: -1783828428127
       description: ""
     children:
@@ -153,20 +199,71 @@ collection:
         meta:
           id: req_3b2f2cd872cd430f9a3e0e84038707f4
           created: 1783848352322
-          modified: 1783848865802
+          modified: 1784482038024
           isPrivate: false
-          description: ""
-          sortKey: -1783848352322
+          description: >-
+            ### Criar Usuário — `POST /users`
+
+
+
+            **Descrição:** cria um novo usuário (name, password) 
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `POST /users`.
+
+
+
+            **Body (JSON — `CreateUserDto`):**
+
+
+
+            **`name`** — string
+
+
+            **`password`** — string
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **200** — usuário criado. **`data`** = `User`: `id`, `name`,
+            `createdAt`, `updatedAt`(no controller atual `updatedAt` na resposta
+            coincide com acriação).
+
+
+            - **400** — validação do body (`name` inválido, campos extra com
+            `forbidNonWhitelisted`, etc.).
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+
+            **Exemplo de URL:**
+
+
+            - `POST http://localhost:3000/users`
+          sortKey: -1783849071853
         method: POST
         body:
           mimeType: application/json
           text: |-
             {
-            	"name": "thisname"
+            	"name": "thisname",
+            	"password": "jaskdfih"
             }
         headers:
           - name: Content-Type
             value: application/json
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJuYW1lIjoidGVzdGUxMDEiLCJlbWFpbCI6InRlc3RlMTAxQGdtYWlsLmNvbSIsImlhdCI6MTc4NDEwNDY0OCwiZXhwIjoxNzg0MTA4MjQ4fQ.0CNrSn-7IEi_yk2ZC_WSw_2bJzECrgy3ncbdyAbm2PU
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -175,16 +272,60 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{BASE_URL}}/users?email=lhamazauro@rex.com"
-        name: Return User by Email
+      - url: "{{BASE_URL}}/users?page=1"
+        name: Return List of Users
         meta:
           id: req_6b10c7f3d4a9412cb40a4696bf3374d2
           created: 1783848360296
-          modified: 1783848619544
+          modified: 1784480141953
           isPrivate: false
-          description: ""
-          sortKey: -1783848360296
+          description: >-
+            ### Retorna Lista de Usuários — `GET /users`
+
+
+
+            **Descrição:** Retorna lista de até 20 Users (id, nome, email,
+            isActive, createdAt, updatedAt) 
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`{% request 'oauth2-refresh', '', 0 %}
+
+
+            **Caminho completo:** `GET /users`.
+
+
+
+            **Query (page — `number`):**
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **200** — Lista de Usuários. **`data`** = `User`: `id`, `name`,
+            `email`, `isActive`, `createdAt`, `updatedAt`.
+
+
+            - **400** - Não houve retorno no index colocado na query `page`.
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+
+            **Exemplo de URL:**
+
+
+            - `GET http://localhost:3000/users`
+
+            - `GET http://localhost:3000/users?page=1`
+          sortKey: -1783849071803
         method: GET
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJuYW1lIjoidGVzdGUxMDEiLCJlbWFpbCI6InRlc3RlMTAxQGdtYWlsLmNvbSIsImlhdCI6MTc4NDEwNDY0OCwiZXhwIjoxNzg0MTA4MjQ4fQ.0CNrSn-7IEi_yk2ZC_WSw_2bJzECrgy3ncbdyAbm2PU
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -193,16 +334,51 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{BASE_URL}}/users/7"
+      - url: "{{BASE_URL}}/users/10"
         name: Return User by Id
         meta:
           id: req_192a255423be4a3fa252cb43d091d58d
           created: 1783848868256
-          modified: 1783848964183
+          modified: 1784480267966
           isPrivate: false
-          description: ""
-          sortKey: -1783848868256
+          description: >-
+            ### Retorna User — `GET /users/{id}`
+
+
+
+            **Descrição:** Retorna um usuário ao inserir o id na URL.
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `GET /users/{id}`.
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **200** — Retorna uma Campanha. **`data`** = `User`: `id`, `name`,
+            `email`, `isActive`, `createdAt`, `updatedAt`.
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+            - **404** - User informada não encontrado.
+
+
+            **Exemplo de URL:**
+
+
+            - `GET http://localhost:3000/users/3`
+          sortKey: -1783849071778
         method: GET
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsIm5hbWUiOiJtYXljb24iLCJlbWFpbCI6Im1heWNvQGdtYWlsLmNvbSIsImlhdCI6MTc4NDA2MzQyOCwiZXhwIjoxNzg0MDY3MDI4fQ.LF3yGClcCDOhpmQN88_1gBnAi3oet54eXh0A5JaPjf8
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -216,10 +392,67 @@ collection:
         meta:
           id: req_2c89910ece514e64b40c141557899570
           created: 1783848965837
-          modified: 1783849049585
+          modified: 1784480455878
           isPrivate: false
-          description: ""
-          sortKey: -1783848965837
+          description: >-
+            ### Atualizar User — `PATCH /users/{id}`
+
+
+
+            **Descrição:** Atualizar um User (nome, email, password) 
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `PATCH /users/{id}`.
+
+
+            **Param (id — `number`):**
+
+
+            **Body (JSON — `UpdateUserDto`):**
+
+
+
+            **`name`** — string
+
+
+            **`email`** — string
+
+
+            **`password`** -string
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **200** — campaign atualizada. **`data`** = `User`: `id`, `name`,
+            `email`, `isActive`, `createdAt`, `updatedAt`.
+
+
+            - **400** — validação do body (campos extra com
+            `forbidNonWhitelisted`, etc.).
+
+
+            - **403** - user foi deletado e não pode ser mudado.
+
+
+            - **404** - User informada não encontrada.
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+
+            **Exemplo de URL:**
+
+
+            - `PATCH http://localhost:3000/users/{id}`
+          sortKey: -1783849071765.5
         method: PATCH
         body:
           mimeType: application/json
@@ -238,16 +471,422 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{BASE_URL}}/users/7"
+      - url: "{{BASE_URL}}/users/10"
         name: Soft Delete User
         meta:
           id: req_0eb4e85591c7453496a5410da13ac52c
           created: 1783849071753
-          modified: 1783849107444
+          modified: 1784481647430
           isPrivate: false
-          description: ""
+          description: >-
+            ### Deletar User — `DELETE /users/{id}`
+
+
+
+            **Descrição:** Deleta um usuário.
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `DELETE /users/{id}`.
+
+
+
+            **Param (id — `number`):**
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **204** — No Content. User foi deletado (atributo **isActive** foi
+            colocado como `false`) 
+
+
+            - **403** - usuário já foi deletado.
+
+
+            - **404** - Usuário informado não encontrado.
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+
+            **Exemplo de URL:**
+
+
+            - `DELETE http://localhost:3000/users/{id}`
           sortKey: -1783849071753
         method: DELETE
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsIm5hbWUiOiJtYXljb24iLCJlbWFpbCI6Im1heWNvQGdtYWlsLmNvbSIsImlhdCI6MTc4NDA2MzQyOCwiZXhwIjoxNzg0MDY3MDI4fQ.LF3yGClcCDOhpmQN88_1gBnAi3oet54eXh0A5JaPjf8
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Campaign
+    meta:
+      id: fld_af14a101a8e248478b46785aac2e28d7
+      created: 1784159781403
+      modified: 1784159781403
+      sortKey: -1784159781403
+      description: ""
+    children:
+      - url: "{{BASE_URL}}/campaigns/1"
+        name: Return Campaign By Id
+        meta:
+          id: req_2f4b203393a843adbfdb8450dad9f89e
+          created: 1784159786573
+          modified: 1784480202001
+          isPrivate: false
+          description: >-
+            ### Retorna Campanha — `GET /campaigns/{id}`
+
+
+
+            **Descrição:** Retorna uma Campanha ao inserir o id na URL.
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `GET /campaigns/{id}`.
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **200** — Retorna uma Campanha. **`data`** = `Campaign`: `id`,
+            `userId`, `name`, `description`, `bannerUrl`, `createdAt`,
+            `updatedAt`.
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+            - **404** - Campanha informada não encontrada (apenas usuários que
+            criaram suas campanhas conseguem ver elas).
+
+
+            **Exemplo de URL:**
+
+
+            - `GET http://localhost:3000/campaigns/3`
+          sortKey: -1784159786573
+        method: GET
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJuYW1lIjoidGVzdGUxMDAiLCJlbWFpbCI6InRlc3RlMTAwQGdtYWlsLmNvbSIsImlhdCI6MTc4NDE4MDAxMSwiZXhwIjoxNzg0MTgzNjExfQ.AKuQ5i3VFoLZfUQLNm2w-UzViSSiZrittR5J7InSnY4
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{BASE_URL}}/campaigns?page=1"
+        name: Return All Campaigns
+        meta:
+          id: req_259a04bea45f4e52a9f19750455ce7ff
+          created: 1784159788351
+          modified: 1784480174484
+          isPrivate: false
+          description: >-
+            ### Retorna Lista de Campanhas — `GET /campaigns`
+
+
+
+            **Descrição:** Retorna lista de até 20 Campaigns (id, nome,
+            descrição, bannerUrl, isActive, createdAt, updatedAt) 
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `GET /campaigns`.
+
+
+
+            **Query (page — `number`):**
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **200** — Lista de Campanhas. **`data`** = `Campaign`: `id`,
+            `userId`, `name`, `description`, `bannerUrl`, `isActive`,
+            `createdAt`, `updatedAt`.
+
+
+            - **400** - Não houve retorno no index colocado na query `page`.
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+
+            **Exemplo de URL:**
+
+
+            - `GET http://localhost:3000/campaigns`
+
+            - `GET http://localhost:3000/campaigns?page=1`
+          sortKey: -1784159788351
+        method: GET
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJuYW1lIjoidGVzdGUxMDEiLCJlbWFpbCI6InRlc3RlMTAxQGdtYWlsLmNvbSIsImlhdCI6MTc4NDE3ODUyMCwiZXhwIjoxNzg0MTgyMTIwfQ.tqkSqt23n9Dv9ojixJ5AaguvJ3NcOwhzUSZiD1oTcBo
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{BASE_URL}}/campaigns"
+        name: Create Campaign
+        meta:
+          id: req_4c46a8b33faf46ab8442f74ae854318a
+          created: 1784159789960
+          modified: 1784479907406
+          isPrivate: false
+          description: >-
+            ### Criar Campaign — `POST /campaigns`
+
+
+
+            **Descrição:** cria uma nova campaign (nome, descrição, bannerUrl) 
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `POST /campaigns`.
+
+
+
+            **Body (JSON — `CreateCampaignDto`):**
+
+
+
+            **`name`** — string
+
+
+            **`description`** — string
+
+
+            **`bannerUrl`** — string
+
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **201** — campaign criada. **`data`** = `Campaign`: `id`,
+            `userId`, `name`, `description`, `bannerUrl`, `createdAt`,
+            `updatedAt`(no controller atual `updatedAt` na resposta coincide com
+            acriação).
+
+
+            - **400** — validação do body (`name` inválido, campos extra com
+            `forbidNonWhitelisted`, etc.).
+
+
+            - **409** — já existe um resource com o **mesmo `name`** (`Resource
+            name already exists`).
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+
+            **Exemplo de URL:**
+
+
+            - `POST http://localhost:3000/campaigns`
+          sortKey: -1784159789960
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Aventura das Neves"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJuYW1lIjoidGVzdGUxMDEiLCJlbWFpbCI6InRlc3RlMTAxQGdtYWlsLmNvbSIsImlhdCI6MTc4NDE3ODUyMCwiZXhwIjoxNzg0MTgyMTIwfQ.tqkSqt23n9Dv9ojixJ5AaguvJ3NcOwhzUSZiD1oTcBo
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{BASE_URL}}/campaigns/2"
+        name: Change Campaign
+        meta:
+          id: req_60733902221741a6acab37529093cd2e
+          created: 1784160640607
+          modified: 1784181200581
+          isPrivate: false
+          description: >-
+            ### Atualizar Campaign — `PATCH /campaigns/{id}`
+
+
+
+            **Descrição:** Atualizar uma campaign (nome, descrição, bannerUrl) 
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `PATCH /campaigns/{id}`.
+
+
+            **Param (id — `number`):**
+
+
+            **Body (JSON — `UpdateCampaignDto`):**
+
+
+
+            **`name`** — string
+
+
+            **`description`** — string
+
+
+            **`bannerUrl`** -string
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **200** — campaign atualizada. **`data`** = `Campaign`: `id`,
+            `userId`, `name`, `description`, `bannerUrl`, `createdAt`,
+            `updatedAt`.
+
+
+            - **400** — validação do body (campos extra com
+            `forbidNonWhitelisted`, etc.).
+
+
+            - **403** - campanha foi deletada e não pode ser mudada.
+
+
+            - **404** - Campanha informada não encontrada (apenas usuários que
+            criaram suas campanhas conseguem ver elas).
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+
+            **Exemplo de URL:**
+
+
+            - `PATCH http://localhost:3000/campaigns/{id}`
+          sortKey: -1784159786473
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"description": "teste"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJuYW1lIjoidGVzdGUxMDEiLCJlbWFpbCI6InRlc3RlMTAxQGdtYWlsLmNvbSIsImlhdCI6MTc4NDE4MDQ4MywiZXhwIjoxNzg0MTg0MDgzfQ.3TAz9vUwCYq0-HHFq1_pWlEMhzWM7rPPfuyuowQnbek
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{BASE_URL}}/campaigns/1"
+        name: Soft Delete Campaign
+        meta:
+          id: req_5c3e9d95c8504241a5f3e05fbc4921cb
+          created: 1784161226544
+          modified: 1784480466401
+          isPrivate: false
+          description: >-
+            ### Deletar Campaign — `DELETE /campaigns/{id}`
+
+
+
+            **Descrição:** Deleta uma campaign.
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `DELETE /campaigns/{id}`.
+
+
+
+            **Param (id — `number`):**
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **204** — No Content. Campaign foi deletada (atributo **isActive**
+            foi colocado como `false`) 
+
+
+            - **403** - campanha já foi deletada.
+
+
+            - **404** - Campanha informada não encontrada (apenas usuários que
+            criaram suas campanhas conseguem ver elas).
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+
+            **Exemplo de URL:**
+
+
+            - `DELETE http://localhost:3000/campaigns/{id}`
+          sortKey: -1784159786373
+        method: DELETE
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJuYW1lIjoidGVzdGUxMDAiLCJlbWFpbCI6InRlc3RlMTAwQGdtYWlsLmNvbSIsImlhdCI6MTc4NDE1OTk1NiwiZXhwIjoxNzg0MTYzNTU2fQ.6h28sIlsvF0TLku9NKAO8577fOXm6iNpjWOISLZAShw
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -275,4 +914,4 @@ spec:
   meta:
     id: spc_25020a26e6b64fb0b42ed4fe2dfaf41f
     created: 1783556266003
-    modified: 1783556266003
+    modified: 1784006035458
