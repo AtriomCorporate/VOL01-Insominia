@@ -46,7 +46,7 @@ collection:
         meta:
           id: req_3dc996164ad547b5997fc6a2c58789e5
           created: 1783556296327
-          modified: 1784483842246
+          modified: 1784584986148
           isPrivate: false
           description: >-
             ### Registra o Usuário — `POST /auth/register`
@@ -55,9 +55,6 @@ collection:
 
             **Descrição:** cria um novo usuário e passa os tokens. 
 
-
-            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
-            <access_token>`.
 
 
             **Caminho completo:** `POST /auth/register`.
@@ -82,12 +79,12 @@ collection:
 
 
 
-            - **200** — usuário criado. **`data`** = `User`: `id`, `name`,
-            `email`, `createdAt`, `updatedAt`.
+            - **201** — usuário criado (retorna JW Tokens) **`data`** =
+            `tokens`: `token`, `refreshToken`.
 
 
-            - **400** — validação do body (`email`/`password` inválido, campos
-            extra com `forbidNonWhitelisted`, etc.).
+            - **400** — validação do body (`name` / `email` / `password`
+            inválido, campos extra com `forbidNonWhitelisted`, etc.).
 
 
 
@@ -103,7 +100,7 @@ collection:
             {
             	"name": "teste101",
             	"email": "teste101@gmail.com",
-            	"passwordHash": "teste101"
+            	"password": "teste101"
             }
         headers:
           - name: Content-Type
@@ -121,16 +118,59 @@ collection:
         meta:
           id: req_0829ff1184a149d9a4c61115abb1e72d
           created: 1783805287945
-          modified: 1784180481196
+          modified: 1784585117028
           isPrivate: false
-          description: ""
+          description: >-
+            ### Realiza o login do Usuário — `POST /auth/login`
+
+
+
+            **Descrição:** faz o login do usuário e retorna os tokens. 
+
+
+
+            **Caminho completo:** `POST /auth/login`.
+
+
+
+            **Body (JSON — `LoginUserDto`):**
+
+
+
+            **`email`** - string
+
+
+            **`password`** — string
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **200** — usuário logado (retorna JW Tokens) **`data`** =
+            `tokens`: `token`, `refreshToken`.
+
+
+            - **400** — validação do body ( `email` / `password` inválido,
+            campos extra com `forbidNonWhitelisted`, etc.).
+
+
+            - **401** - email não encontrado.
+
+
+
+            **Exemplo de URL:**
+
+
+            - `POST http://localhost:3000/auth/login`
           sortKey: -1783846709365
         method: POST
         body:
           mimeType: application/json
           text: |-
             {
-            	"email": "teste101@gmail.com",
+            	"email": "teste10@gmail.com",
             	"password": "teste101"
             }
         headers:
@@ -149,9 +189,40 @@ collection:
         meta:
           id: req_b08cea54780a43f39c56948f343dd229
           created: 1783807907636
-          modified: 1784161245943
+          modified: 1784585496478
           isPrivate: false
-          description: ""
+          description: >-
+            ### Retorna o Usuário — `GET /auth/me`
+
+
+
+            **Descrição:** retorna o usuário que foi passado no token.
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `GET /auth/me`.
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **200** — usuário retornado **`data`** = `User`: `id`, `name`,
+            `email`, `isActive`, `createdAt`, `updatedAt`.
+
+
+            - **401** — requesição não autorizada (o token passado é inválido).
+
+
+
+            **Exemplo de URL:**
+
+
+            - `GET http://localhost:3000/auth/me`
           sortKey: -1783846709340
         method: GET
         authentication:
@@ -170,9 +241,41 @@ collection:
         meta:
           id: req_50bf20156f34434fbde79d8c071262a6
           created: 1783846709315
-          modified: 1784006224058
+          modified: 1784586173473
           isPrivate: false
-          description: ""
+          description: >-
+            ### Retorna um novo token — `POST /auth/refresh`
+
+
+
+            **Descrição:** envia um novo token para quando o antigo expirar. 
+
+
+
+            **Caminho completo:** `POST /auth/refresh`.
+
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <refresh_token>`.
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **201** — token retornado **`data`** = `Tokens`: `token`.
+
+
+            - **401** — requesição não autorizada (o token passado é inválido).
+
+
+
+            **Exemplo de URL:**
+
+
+            - `POST http://localhost:3000/auth/refresh`
           sortKey: -1783846709315
         method: POST
         authentication:
