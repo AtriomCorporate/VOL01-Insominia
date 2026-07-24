@@ -46,7 +46,7 @@ collection:
         meta:
           id: req_3dc996164ad547b5997fc6a2c58789e5
           created: 1783556296327
-          modified: 1784584986148
+          modified: 1784922862504
           isPrivate: false
           description: >-
             ### Registra o Usuário — `POST /auth/register`
@@ -98,9 +98,9 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"name": "teste101",
-            	"email": "teste101@gmail.com",
-            	"password": "teste101"
+            	"name": "teste105",
+            	"email": "teste105@gmail.com",
+            	"password": "teste105"
             }
         headers:
           - name: Content-Type
@@ -118,7 +118,7 @@ collection:
         meta:
           id: req_0829ff1184a149d9a4c61115abb1e72d
           created: 1783805287945
-          modified: 1784585117028
+          modified: 1784923685603
           isPrivate: false
           description: >-
             ### Realiza o login do Usuário — `POST /auth/login`
@@ -159,6 +159,9 @@ collection:
             - **401** - email não encontrado.
 
 
+            - **404** - usuário não encontrado.
+
+
 
             **Exemplo de URL:**
 
@@ -170,8 +173,8 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"email": "teste10@gmail.com",
-            	"password": "teste101"
+            	"email": "teste103@gmail.com",
+            	"password": "teste103"
             }
         headers:
           - name: Content-Type
@@ -189,7 +192,7 @@ collection:
         meta:
           id: req_b08cea54780a43f39c56948f343dd229
           created: 1783807907636
-          modified: 1784585496478
+          modified: 1784924659426
           isPrivate: false
           description: >-
             ### Retorna o Usuário — `GET /auth/me`
@@ -227,7 +230,7 @@ collection:
         method: GET
         authentication:
           type: bearer
-          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsIm5hbWUiOiJsZW96ZXJhIiwiZW1haWwiOiJsaGFtYXphdXJvQHJleC5jb20iLCJpYXQiOjE3ODQwMDYyMjQsImV4cCI6MTc4NDAwOTgyNH0.NaSGS3A4XqTh-0ULM0-GgMF5Xob_W9Yg8ed1wPFaB_I
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJuYW1lIjoidGVzdGUxMDEiLCJlbWFpbCI6InRlc3RlMTAxQGdtYWlsLmNvbSIsImlhdCI6MTc4NDU5NDY3OCwiZXhwIjoxNzg0NTk4Mjc4fQ.3kFrfbA1lXGYjJrQbgQg-GrAvzjfnurmmyndYMY3qtU
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -241,7 +244,7 @@ collection:
         meta:
           id: req_50bf20156f34434fbde79d8c071262a6
           created: 1783846709315
-          modified: 1784586173473
+          modified: 1784918993420
           isPrivate: false
           description: >-
             ### Retorna um novo token — `POST /auth/refresh`
@@ -280,7 +283,7 @@ collection:
         method: POST
         authentication:
           type: bearer
-          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjYsIm5hbWUiOiJsZW96ZXJhIiwiZW1haWwiOiJsaGFtYXphdXJvQHJleC5jb20iLCJpYXQiOjE3ODQwMDYwNTcsImV4cCI6MTc4NDYxMDg1N30.4g3D1YVPqqnQL_r_fx_PCofgyYr5d69OlJzCnWRQU8w
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsIm5hbWUiOiJ0ZXN0ZTEwNCIsImVtYWlsIjoidGVzdGUxMDRAZ21haWwuY29tIiwiaWF0IjoxNzg0OTE0MTY2LCJleHAiOjE3ODU1MTg5NjZ9.iQBX5BVIb9rrHgDYLB0xNPjT100LRctcThfQXaoaf3Q
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -491,11 +494,11 @@ collection:
             store: true
           rebuildPath: true
       - url: "{{BASE_URL}}/users/7"
-        name: Change Users Name
+        name: Change User
         meta:
           id: req_2c89910ece514e64b40c141557899570
           created: 1783848965837
-          modified: 1784480455878
+          modified: 1784910745011
           isPrivate: false
           description: >-
             ### Atualizar User — `PATCH /users/{id}`
@@ -643,12 +646,12 @@ collection:
       sortKey: -1784159781403
       description: ""
     children:
-      - url: "{{BASE_URL}}/campaigns/1"
+      - url: "{{BASE_URL}}/campaigns/3"
         name: Return Campaign By Id
         meta:
           id: req_2f4b203393a843adbfdb8450dad9f89e
           created: 1784159786573
-          modified: 1784480202001
+          modified: 1784914191698
           isPrivate: false
           description: >-
             ### Retorna Campanha — `GET /campaigns/{id}`
@@ -677,8 +680,10 @@ collection:
             - **401** — token em falta, inválido ou expirado.
 
 
-            - **404** - Campanha informada não encontrada (apenas usuários que
-            criaram suas campanhas conseguem ver elas).
+            - **403** - Campanha não pertence ao usuário informado.
+
+
+            - **404** - Campanha informada não encontrada.
 
 
             **Exemplo de URL:**
@@ -689,7 +694,7 @@ collection:
         method: GET
         authentication:
           type: bearer
-          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJuYW1lIjoidGVzdGUxMDAiLCJlbWFpbCI6InRlc3RlMTAwQGdtYWlsLmNvbSIsImlhdCI6MTc4NDE4MDAxMSwiZXhwIjoxNzg0MTgzNjExfQ.AKuQ5i3VFoLZfUQLNm2w-UzViSSiZrittR5J7InSnY4
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsIm5hbWUiOiJ0ZXN0ZTEwNCIsImVtYWlsIjoidGVzdGUxMDRAZ21haWwuY29tIiwiaWF0IjoxNzg0OTE0MTY2LCJleHAiOjE3ODQ5MTc3NjZ9.exUOdANkUqBb_g9I8pXI01M-6400l_PdHkIRi3ySAjk
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -703,7 +708,7 @@ collection:
         meta:
           id: req_259a04bea45f4e52a9f19750455ce7ff
           created: 1784159788351
-          modified: 1784480174484
+          modified: 1784923741838
           isPrivate: false
           description: >-
             ### Retorna Lista de Campanhas — `GET /campaigns`
@@ -752,7 +757,7 @@ collection:
         method: GET
         authentication:
           type: bearer
-          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJuYW1lIjoidGVzdGUxMDEiLCJlbWFpbCI6InRlc3RlMTAxQGdtYWlsLmNvbSIsImlhdCI6MTc4NDE3ODUyMCwiZXhwIjoxNzg0MTgyMTIwfQ.tqkSqt23n9Dv9ojixJ5AaguvJ3NcOwhzUSZiD1oTcBo
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsIm5hbWUiOiJ0ZXN0ZTEwMyIsImVtYWlsIjoidGVzdGUxMDNAZ21haWwuY29tIiwiaWF0IjoxNzg0OTIzNjg3LCJleHAiOjE3ODQ5MjcyODd9.jGAK2VgCZf8qeO-Wm_B0W0ueLHS1dvEu0PT9Kpeu-LE
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -766,7 +771,7 @@ collection:
         meta:
           id: req_4c46a8b33faf46ab8442f74ae854318a
           created: 1784159789960
-          modified: 1784479907406
+          modified: 1784915140636
           isPrivate: false
           description: >-
             ### Criar Campaign — `POST /campaigns`
@@ -829,16 +834,17 @@ collection:
         method: POST
         body:
           mimeType: application/json
-          text: |-
+          text: >
             {
-            	"name": "Aventura das Neves"
+            	"name": "Head without a Face",
+            	"description": "An already seen horror. Well, well, well, not so fast. This is not a horror, it is an adventure. A extremely powerful artefect in the shape of a head, not a helmet because don't have the empty space inside. Following the legend, whoever posses the head will be able to reshape the reality around their eyes. The head cannot, and will not fall at the wrong hands."  
             }
         headers:
           - name: Content-Type
             value: application/json
         authentication:
           type: bearer
-          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJuYW1lIjoidGVzdGUxMDEiLCJlbWFpbCI6InRlc3RlMTAxQGdtYWlsLmNvbSIsImlhdCI6MTc4NDE3ODUyMCwiZXhwIjoxNzg0MTgyMTIwfQ.tqkSqt23n9Dv9ojixJ5AaguvJ3NcOwhzUSZiD1oTcBo
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsIm5hbWUiOiJ0ZXN0ZTEwMyIsImVtYWlsIjoidGVzdGUxMDNAZ21haWwuY29tIiwiaWF0IjoxNzg0OTEzNzY0LCJleHAiOjE3ODQ5MTczNjR9.i1ikjmqh9AqhBMuYC0ILpUF2dzXhlN8WZWkTIH7-_6I
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -852,7 +858,7 @@ collection:
         meta:
           id: req_60733902221741a6acab37529093cd2e
           created: 1784160640607
-          modified: 1784181200581
+          modified: 1784914203707
           isPrivate: false
           description: >-
             ### Atualizar Campaign — `PATCH /campaigns/{id}`
@@ -899,7 +905,8 @@ collection:
             `forbidNonWhitelisted`, etc.).
 
 
-            - **403** - campanha foi deletada e não pode ser mudada.
+            - **403** - campanha foi deletada e não pode ser mudada ou campanha
+            não pertence ao usuário informado.
 
 
             - **404** - Campanha informada não encontrada (apenas usuários que
@@ -927,7 +934,7 @@ collection:
             value: application/json
         authentication:
           type: bearer
-          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjExLCJuYW1lIjoidGVzdGUxMDEiLCJlbWFpbCI6InRlc3RlMTAxQGdtYWlsLmNvbSIsImlhdCI6MTc4NDE4MDQ4MywiZXhwIjoxNzg0MTg0MDgzfQ.3TAz9vUwCYq0-HHFq1_pWlEMhzWM7rPPfuyuowQnbek
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsIm5hbWUiOiJ0ZXN0ZTEwNCIsImVtYWlsIjoidGVzdGUxMDRAZ21haWwuY29tIiwiaWF0IjoxNzg0OTE0MTY2LCJleHAiOjE3ODQ5MTc3NjZ9.exUOdANkUqBb_g9I8pXI01M-6400l_PdHkIRi3ySAjk
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -936,12 +943,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{BASE_URL}}/campaigns/1"
+      - url: "{{BASE_URL}}/campaigns/2"
         name: Soft Delete Campaign
         meta:
           id: req_5c3e9d95c8504241a5f3e05fbc4921cb
           created: 1784161226544
-          modified: 1784480466401
+          modified: 1784914218135
           isPrivate: false
           description: >-
             ### Deletar Campaign — `DELETE /campaigns/{id}`
@@ -970,7 +977,8 @@ collection:
             foi colocado como `false`) 
 
 
-            - **403** - campanha já foi deletada.
+            - **403** - campanha já foi deletada ou campanha não pertence ao
+            usuário informado.
 
 
             - **404** - Campanha informada não encontrada (apenas usuários que
@@ -989,7 +997,390 @@ collection:
         method: DELETE
         authentication:
           type: bearer
-          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEwLCJuYW1lIjoidGVzdGUxMDAiLCJlbWFpbCI6InRlc3RlMTAwQGdtYWlsLmNvbSIsImlhdCI6MTc4NDE1OTk1NiwiZXhwIjoxNzg0MTYzNTU2fQ.6h28sIlsvF0TLku9NKAO8577fOXm6iNpjWOISLZAShw
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsIm5hbWUiOiJ0ZXN0ZTEwNCIsImVtYWlsIjoidGVzdGUxMDRAZ21haWwuY29tIiwiaWF0IjoxNzg0OTE0MTY2LCJleHAiOjE3ODQ5MTc3NjZ9.exUOdANkUqBb_g9I8pXI01M-6400l_PdHkIRi3ySAjk
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Character
+    meta:
+      id: fld_28f81483bfe748508865b2e4205880c7
+      created: 1784594633380
+      modified: 1784594633380
+      sortKey: -1784594633380
+      description: ""
+    children:
+      - url: "{{BASE_URL}}/characters"
+        name: Create Character
+        meta:
+          id: req_3e474cda546d4c1cb2e3ba2333318e71
+          created: 1784594636090
+          modified: 1784926184379
+          isPrivate: false
+          description: >-
+            ### Criar Personagem — `POST /characters`
+
+
+
+            **Descrição:** cria uma novo personagem (campaignId, name, race,
+            characterClass, level, maxHp, avatarUrl(opcional)).
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `POST /characters`.
+
+
+
+            **Body (JSON — `CreateCharacterDto`):**
+
+
+
+            **`campaignId`** — int
+
+
+            **`name`** — string
+
+
+            **`race`** — string
+
+
+            **`characterClass`** — string
+
+
+            **`level`** — int
+
+
+            **`maxHp`** — int
+
+
+            **`avatarUrl`** — string
+
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **201** — character criado. **`data`** = `Character`: `id`,
+            `userId`, `campaingId`, `name`, `race`, `characterClass`, `level`,
+            `maxHp`, `hp`, `avatarUrl`, `isActive`, `createdAt`, `updatedAt`.
+
+
+            - **400** — validação do body (`campaignId` inválido, campos extra
+            com `forbidNonWhitelisted`, etc.).
+
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+
+            - **404** - recurso não encontrado.
+
+
+
+            **Exemplo de URL:**
+
+
+            - `POST http://localhost:3000/characters`
+          sortKey: -1784598120001
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"campaignId": 3,
+            	"name": "Mier",
+            	"race": "Draconato",
+            	"characterClass": "Sorcerer",
+            	"level": 1,
+            	"maxHp": 7	
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsIm5hbWUiOiJ0ZXN0ZTEwMyIsImVtYWlsIjoidGVzdGUxMDNAZ21haWwuY29tIiwiaWF0IjoxNzg0OTIzNjg3LCJleHAiOjE3ODQ5MjcyODd9.jGAK2VgCZf8qeO-Wm_B0W0ueLHS1dvEu0PT9Kpeu-LE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{BASE_URL}}/characters"
+        name: Return All User Characters
+        meta:
+          id: req_4847675d589540919b057db93e657e98
+          created: 1784596762259
+          modified: 1784926067203
+          isPrivate: false
+          description: >-
+            ### Retorna Personagem do Usuário — `GET /characters`
+
+
+
+            **Descrição:** retorna personagens do usuário que faz o request (id,
+            userId, campaignId, name, race, characterClass, level, hp, maxHp,
+            avatarUrl, isActive, createdAt, updatedAt).
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `GET /characters`.
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **200** — personagens retornados. **`data`** = `Character`: `id`,
+            `userId`, `campaingId`, `name`, `race`, `characterClass`, `level`,
+            `maxHp`, `hp`, `avatarUrl`, `isActive`, `createdAt`, `updatedAt`.
+
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+
+            **Exemplo de URL:**
+
+
+            - `GET http://localhost:3000/characters`
+          sortKey: -1784598119951
+        method: GET
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsIm5hbWUiOiJ0ZXN0ZTEwNCIsImVtYWlsIjoidGVzdGUxMDRAZ21haWwuY29tIiwiaWF0IjoxNzg0OTIzNTg5LCJleHAiOjE3ODQ5MjcxODl9.Vy32lzq0m-e2wKivYHGRMfaxE4ubLDAQkol6gKX5yo8
+          prefix: ""
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{BASE_URL}}/characters/5"
+        name: Return Character By Id
+        meta:
+          id: req_a559f10c41854e99becad643dbd52727
+          created: 1784596988775
+          modified: 1784926203435
+          isPrivate: false
+          description: >-
+            ### Retorna um Personagem com base no id — `GET /characters/{id}`
+
+
+
+            **Descrição:** cria uma novo personagem (id, userId, campaignId,
+            name, race, characterClass, level, hp, maxHp, avatarUrl, isActive,
+            createdAt, updatedAt).
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `GET /characters/{id}`.
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **200** — personagen retornado. **`data`** = `Character`: `id`,
+            `userId`, `campaingId`, `name`, `race`, `characterClass`, `level`,
+            `maxHp`, `hp`, `avatarUrl`, `isActive`, `createdAt`, `updatedAt`.
+
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+
+            - **403** — perso
+
+
+
+            **Exemplo de URL:**
+
+
+            - `GET http://localhost:3000/characters/{id}`
+          sortKey: -1784598119926
+        method: GET
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsIm5hbWUiOiJ0ZXN0ZTEwMyIsImVtYWlsIjoidGVzdGUxMDNAZ21haWwuY29tIiwiaWF0IjoxNzg0OTIzNjg3LCJleHAiOjE3ODQ5MjcyODd9.jGAK2VgCZf8qeO-Wm_B0W0ueLHS1dvEu0PT9Kpeu-LE
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{BASE_URL}}/characters/1"
+        name: Update Character By Id
+        meta:
+          id: req_4e4eb8d70d914e31a32fee32adce869c
+          created: 1784598081598
+          modified: 1784926269636
+          isPrivate: false
+          description: >-
+            ### Atualizar Personagem — `PATCH /characters/{id}`
+
+
+
+            **Descrição:** atualiza um personagem do usuário (name, race,
+            characterClass, level, maxHp, avatarUrl).
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `PATCH /characters/{id}`.
+
+
+
+            **Body (JSON — `UpdateCharacterDto`):**
+
+
+
+            **`name`** — string
+
+
+            **`race`** — string
+
+
+            **`characterClass`** — string
+
+
+            **`level`** — int
+
+
+            **`maxHp`** — int
+
+
+            **`avatarUrl`** — string
+
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **201** — character alterado. **`data`** = `Character`: `id`,
+            `userId`, `campaingId`, `name`, `race`, `characterClass`, `level`,
+            `maxHp`, `hp`, `avatarUrl`, `isActive`, `createdAt`, `updatedAt`(no
+            controller atual `updatedAt` na resposta coincide com a criação).
+
+
+            - **400** — validação do body (campos extra com
+            `forbidNonWhitelisted`, etc.).
+
+
+
+            - **404** — character ou campaign not found.
+
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+
+            **Exemplo de URL:**
+
+
+            - `PATCH http://localhost:3000/characters`
+          sortKey: -1784598119913.5
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Pedrin"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJ0ZXN0ZTEwMSIsImVtYWlsIjoidGVzdGUxMDFAZ21haWwuY29tIiwiaWF0IjoxNzg0NzY2MTQzLCJleHAiOjE3ODQ3Njk3NDN9.Jo4QZojVxfNUuxkccZ7GwlJoJagkrvWJhVOviOxsVlA
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{BASE_URL}}/characters/1"
+        name: Soft Delete Character
+        meta:
+          id: req_a3fd33e2f84348039509bda89e155d89
+          created: 1784598119901
+          modified: 1784925829108
+          isPrivate: false
+          description: >-
+            ### Soft Delete do Personagem — `DELETE /characters/{id}`
+
+
+
+            **Descrição:** mudar o atributo isActive para `false`.
+
+
+            **Autenticação:** **JWT obrigatório** `Authorization: Bearer
+            <access_token>`.
+
+
+            **Caminho completo:** `DELETE /characters/{id}`.
+
+
+
+            **Resposta HTTP (envelope global):**
+
+
+
+            - **204** — Personagem deletado com sucesso.
+
+
+            - **403** - Personagem já foi deletado ou não pertence ao usuário.
+
+
+            - **404** - Personagem não encontrado.
+
+
+            - **401** — token em falta, inválido ou expirado.
+
+
+
+            **Exemplo de URL:**
+
+
+            - `DELETE http://localhost:3000/characters/{id}`
+          sortKey: -1784598119901
+        method: DELETE
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsIm5hbWUiOiJ0ZXN0ZTEwMSIsImVtYWlsIjoidGVzdGUxMDFAZ21haWwuY29tIiwiaWF0IjoxNzg0NzY2MTQzLCJleHAiOjE3ODQ3Njk3NDN9.Jo4QZojVxfNUuxkccZ7GwlJoJagkrvWJhVOviOxsVlA
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -1009,7 +1400,7 @@ environments:
   meta:
     id: env_8f45f54ac15a9b0ddcb1ddfee0f14b4d8e258ea4
     created: 1783556266005
-    modified: 1783556368812
+    modified: 1784924708250
     isPrivate: false
   data:
     BASE_URL: http://localhost:3000
